@@ -1,0 +1,32 @@
+
+body{
+
+    width: 100vh;
+    height: 100vh;
+
+    background-image: url("../../img/login_bg.jpg");
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: relative;
+
+}
+.auth-section{
+    position: absolute;
+    left: 100%;
+    top: 45%;
+    transform: translate(-50%,-50%);
+    width: 300px;
+}
+
+p{
+    margin: 0;
+    font-size: 13px;
+}
+a{
+    text-decoration: none;
+
+}
+
+

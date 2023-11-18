@@ -1,0 +1,24 @@
+.custom_css th, .custom_css td{
+    vertical-align: middle !important;
+    text-align: center;
+    font-size: 12px;
+}
+hr{
+margin: 5px !important;
+color: aqua;
+}
+p{
+    margin: 0;
+}
+
+.custom_css td img{
+    width: 75px !important;
+    cursor: pointer;
+}
+
+.custom_css tr{
+    border-bottom: 2px solid black;
+}
+ 
+
+

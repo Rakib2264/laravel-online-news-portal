@@ -1,0 +1,16 @@
+.sidebar-subcat {
+   padding-left: 20px;
+}
+.sidebar-subcat li{
+    padding: 5px 0 !important;
+    margin: 0 !important;
+ }
+ .sidebar-subcat li a{
+   font-size: 14px !important;
+   color: gray !important;
+ }
+ .sidebar-subcat li a:hover{
+
+    color: #f48840 !important;
+
+  } 
