@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\SubCategory;
+use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FrontendController extends Controller
 {
@@ -86,17 +88,18 @@ class FrontendController extends Controller
 
      public function tag($slug){
 
-        // $sub_category = SubCategory::where('slug',$slug)->first();
-        // if($sub_category){
-        //  $posts =  Post::with('category','sub_category','tag','user')
-        //  ->where('is_apporved',1)
-        //  ->where('sub_category_id',$sub_category->id)
-        //  ->where('status',1)->latest()
-        //  ->paginate(5);
-        // }
-        // $title = $sub_category->name;
-        // $sub_title = 'Post By Sub Category';
-        // return view('frontend.modules.all_post',compact('posts','title','sub_title'));
+         $tag = Tag::where('slug',$slug)->first();
+         $post_ids = DB::table('post_tag')->select('post_id')->where('tag_id',$tag->id)->pluck('post_id');
+          if($tag){
+          $posts =  Post::with('category','sub_category','tag','user')
+         ->where('is_apporved',1)
+         ->whereIn('id',$post_ids)
+          ->latest()
+         ->paginate(5);
+        }
+        $title = $tag->name;
+        $sub_title = 'Post By Sub Category';
+        return view('frontend.modules.all_post',compact('posts','title','sub_title'));
 
      }
 }
