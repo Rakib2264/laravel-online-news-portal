@@ -1,4 +1,4 @@
-/* 
+/*
 
 TemplateMo 551 Stand Blog
 
@@ -246,7 +246,7 @@ header .navbar {
 }
 .navbar .navbar-toggler {
 	border-color: #fff;
-	background-color: #f48840;	
+	background-color: #f48840;
 	height: 46px;
 	outline: none;
 	border-radius: 0px;
@@ -623,7 +623,7 @@ ul.page-numbers li a:hover {
 	height: 46px;
 	border: 1px solid #eee;
 	font-size: 13px;
-	text-transform: uppercase;
+
 	font-weight: 500;
 	color: #7a7a7a;
 	outline: none;
@@ -636,8 +636,7 @@ ul.page-numbers li a:hover {
 	height: 46px;
 	border: 1px solid #eee;
 	font-size: 13px;
-	text-transform: uppercase;
-	font-weight: 500;
+ 	font-weight: 500;
 	color: #7a7a7a;
 	outline: none;
 	padding: 10px 15px;
@@ -660,8 +659,7 @@ ul.page-numbers li a:hover {
 	font-size: 13px;
 	font-weight: 500;
 	padding: 12px 20px;
-	text-transform: uppercase;
-	transition: all .3s;
+ 	transition: all .3s;
 	border: none;
 	outline: none;
 }

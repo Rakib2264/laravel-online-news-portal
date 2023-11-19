@@ -11,7 +11,8 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "laravelcollective/html": "^6.4"
+        "laravelcollective/html": "^6.4",
+        "php-flasher/flasher-laravel": "^1.15"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.9",

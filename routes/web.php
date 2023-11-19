@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -31,6 +32,7 @@ Route::get('/category/{slug}',[FrontendController::class,'category'])->name('fro
 Route::get('/category/{cat_slug}/{sub_cat_slug}',[FrontendController::class,'sub_category'])->name('front.sub_category');
 Route::get('/tag/{slug}',[FrontendController::class,'tag'])->name('front.tags');
 
+
 Route::get('/single-post/{slug}',[FrontendController::class,'single'])->name('front.single');
 
 
@@ -43,6 +45,9 @@ Route::prefix('dashboard')->group(function () {
     Route::resource('sub_category',SubCategoryController::class);
     Route::resource('tag',TagController::class);
     Route::resource('post',PostController::class);
+
+    Route::resource('comment' ,CommentController::class);
+
  });
 
 

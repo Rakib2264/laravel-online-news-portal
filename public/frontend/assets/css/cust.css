@@ -13,4 +13,10 @@
 
     color: #f48840 !important;
 
-  } 
+  }
+
+.post-description img{
+    width: 60%;
+}
+
+

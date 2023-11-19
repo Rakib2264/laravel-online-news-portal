@@ -22,10 +22,7 @@ class FrontendController extends Controller
 
          return view('frontend.modules.index',compact('posts','slider_post'));
     }
-    public function single(){
 
-        return view('frontend.modules.single');
-    }
 
     public function all_post(){
 
@@ -86,20 +83,38 @@ class FrontendController extends Controller
 
      }
 
-     public function tag($slug){
+     public function tag(string $slug){
 
          $tag = Tag::where('slug',$slug)->first();
-         $post_ids = DB::table('post_tag')->select('post_id')->where('tag_id',$tag->id)->pluck('post_id');
+         $post_ids = DB::table('post_tag')->select('post_id')->where('tag_id',$tag->id)->distinct('post_id')->pluck('post_id');
           if($tag){
           $posts =  Post::with('category','sub_category','tag','user')
          ->where('is_apporved',1)
          ->whereIn('id',$post_ids)
           ->latest()
-         ->paginate(5);
+         ->paginate(10);
         }
         $title = $tag->name;
-        $sub_title = 'Post By Sub Category';
+        $sub_title = 'Post Tag';
         return view('frontend.modules.all_post',compact('posts','title','sub_title'));
 
      }
+
+
+     public function single(string $slug){
+       $post = Post::with('category','sub_category','tag','user','comment','comment.user')
+         ->where('is_apporved',1)
+         ->where('status',1)
+         ->where('slug',$slug)
+         ->firstOrFail();
+
+
+        //  find , findOrFail
+        //  if(!$post){
+        //     abort(404);
+        //  }
+        $title = $post->title;
+        $sub_title = 'Single Post';
+         return view('frontend.modules.single',compact('post','title','sub_title'));
+    }
 }
