@@ -36,13 +36,12 @@ class CommentController extends Controller
             'comment'=>'required|min:5|max:1000',
         ]);
 
-        $comment = new Comment();
-        $comment->comment = $request->comment;
-        $comment->post_id = $request->post_id;
-        $comment->status = 1 ;
-        $comment->user_id = Auth::user()->id;
-        $comment->save();
-        return redirect()->back()->with('success','আপনার কমেন্ট পাঠানো হয়েছে');
+        $comment_data = $request->all();
+
+        $comment_data['status'] = 1 ;
+        $comment_data['user_id'] = Auth::id();
+        $comment = Comment::create($comment_data);
+         return redirect()->back();
 
     }
 

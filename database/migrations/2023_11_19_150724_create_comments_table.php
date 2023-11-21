@@ -17,7 +17,7 @@ return new class extends Migration
             $table->tinyInteger('status')->nullable();
             $table->foreignId('post_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->timestamps();
+            $table->integer('comment_id')->nullable();            $table->timestamps();
         });
     }
 

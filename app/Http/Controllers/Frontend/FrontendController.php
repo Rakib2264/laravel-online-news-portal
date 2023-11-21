@@ -102,11 +102,12 @@ class FrontendController extends Controller
 
 
      public function single(string $slug){
-       $post = Post::with('category','sub_category','tag','user','comment','comment.user')
+       $post = Post::with('category','sub_category','tag','user','comment','comment.user','comment.replay')
          ->where('is_apporved',1)
          ->where('status',1)
          ->where('slug',$slug)
          ->firstOrFail();
+
 
 
         //  find , findOrFail

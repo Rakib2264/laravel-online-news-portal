@@ -595,8 +595,13 @@ ul.page-numbers li a:hover {
 	display: inline;
 }
 
+.author-thumb img{
+    width: 75px !important;
+    border-radius: 50%;
+}
+
 .blog-posts .comments ul li .right-content {
-	margin-left: 130px;
+	margin-left: 100px;
 }
 
 .blog-posts .comments ul li .right-content h4 {
