@@ -118,4 +118,14 @@ class FrontendController extends Controller
         $sub_title = 'Single Post';
          return view('frontend.modules.single',compact('post','title','sub_title'));
     }
+
+
+// contuct us  section
+// final bole dile method take overide kora jaynah
+final public function contact_us(){
+
+    return view('frontend.modules.contact_us');
+}
+
+
 }
