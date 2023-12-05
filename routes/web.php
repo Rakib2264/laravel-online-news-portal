@@ -38,8 +38,10 @@ Route::get('contact-us',[FrontendController::class,'contact_us'])->name('front.c
 Route::post('contact',[ContactController::class,'store'])->name('contact.store');
 
 // Backend
+Route::get('/get-district/{id}' ,[ProfileController::class,'getDivision']);
+Route::get('/get-thana/{id}' ,[ProfileController::class,'getThanas']);
 
-Route::prefix('dashboard')->group(function () {
+Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function () {
     Route::get('/',[BackendController::class,'index'])->name('back.index');
     Route::resource('category',CategoryController::class);
     Route::get('/get-subcategory/{id}',[SubCategoryController::class,'getSubCategoryByCategoryId']);
@@ -48,6 +50,7 @@ Route::prefix('dashboard')->group(function () {
     Route::resource('post',PostController::class);
 
     Route::resource('comment' ,CommentController::class);
+    Route::resource('userprofile' ,ProfileController::class);
 
  });
 
