@@ -42,13 +42,14 @@ Route::get('/get-district/{id}' ,[ProfileController::class,'getDivision']);
 Route::get('/get-thana/{id}' ,[ProfileController::class,'getThanas']);
 
 Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function () {
+    Route::post('/upload-photo' ,[ProfileController::class,'upload_photo']);
+
     Route::get('/',[BackendController::class,'index'])->name('back.index');
     Route::resource('category',CategoryController::class);
     Route::get('/get-subcategory/{id}',[SubCategoryController::class,'getSubCategoryByCategoryId']);
     Route::resource('sub_category',SubCategoryController::class);
     Route::resource('tag',TagController::class);
     Route::resource('post',PostController::class);
-
     Route::resource('comment' ,CommentController::class);
     Route::resource('userprofile' ,ProfileController::class);
 
