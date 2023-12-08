@@ -33,7 +33,8 @@
             <ul class="post-info">
                 <li><a href="#">{{ $post->user->name }}</a></li>
                 <li><a href="#">{{ $post->user?->created_at->format('M d, Y') }}</a></li>
-                <li><a href="#">12 Comments</a></li>
+                <li><a href="#">{{$post->comment?->count()}} Comment</a></li>
+                <li><a href="#">Post Read Count: {{$post->post_count?->count}}</a></li>
             </ul>
             <div class="post-description">
                 <p> {!! $post->description !!}</p>
