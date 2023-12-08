@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\PostCountController;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\PostCount;
 use App\Models\SubCategory;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -125,6 +127,14 @@ class FrontendController extends Controller
 final public function contact_us(){
 
     return view('frontend.modules.contact_us');
+}
+
+
+final public function postReadCount($post_id){
+
+    
+     (new PostCountController($post_id))->postReadCount();
+
 }
 
 

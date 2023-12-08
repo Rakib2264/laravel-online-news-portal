@@ -8,6 +8,7 @@ use App\Http\Requests\PostUpdateRequest;
 use App\Models\Post;
 use App\Models\SubCategory;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,15 @@ class PostController extends Controller
      */
     public function index()
     {
-       $posts = Post::with('category','sub_category','user','tag')->latest()->paginate(5);
+        $querycommon = Post::with('category','sub_category','user','tag');
+        if(Auth::user()->role===User::USER){
+            $posts =  $querycommon->where('user_id',Auth::id())->latest()->paginate(5);
+
+        }
+
+        $posts =  $querycommon->latest()->paginate(5);
+
+
        return view('backend.modules.post.index',compact('posts'));
     }
 
@@ -63,6 +72,8 @@ class PostController extends Controller
 
         //many to many relaton pivot table
         $post->tag()->attach($request->input('tag_ids'));
+
+        return redirect()->route('post.index')->with('success',"Post Created Successfully");
     }
 
     /**
@@ -70,8 +81,16 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        
+        if(Auth::user()->role == User::USER && $post->user_id !== Auth::id()){
+             abort(403,'Unautorized');
+        }
 
-       $post->load(['category','sub_category','user','tag']);
+
+        $post->load(['category','sub_category','user','tag']);
+
+
+
         return view('backend.modules.post.show', compact('post'));
 
     }
@@ -127,6 +146,20 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        // Check if the post has a photo
+        if ($post->photo) {
+            $path = 'img/post/original/';
+            $thumb_path = 'img/post/thumbmail/';
+
+            // Old photo delete
+            PhotoUploadController::imageUnlink($path, $post->photo);
+            PhotoUploadController::imageUnlink($thumb_path, $post->photo);
+        }
+
+        // Delete the post
+        $post->delete();
+
+        return back()->with('success', "Post Deleted");
     }
+
 }

@@ -6,4 +6,7 @@
     <script src="{{asset('frontend')}}/assets/js/custom.js"></script>
     <script src="{{asset('frontend')}}/assets/js/owl.js"></script>
     <script src="{{asset('frontend')}}/assets/js/slick.js"></script>
- 
+    
+    @stack('js')
+
+

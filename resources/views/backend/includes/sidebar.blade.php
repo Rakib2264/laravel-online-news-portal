@@ -7,6 +7,8 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
+                @if (\Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ADMIN)
+
                 <div class="sb-sidenav-menu-heading">Category</div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -45,6 +47,8 @@
                         <a class="nav-link" href="{{route('tag.create')}}">Create</a>
                     </nav>
                 </div>
+                @endif
+
 
                 <div class="sb-sidenav-menu-heading">Post</div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsssw" aria-expanded="false" aria-controls="collapseLayouts">

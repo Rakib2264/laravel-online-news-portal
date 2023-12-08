@@ -132,4 +132,21 @@
         </div>
     </div>
 </div>
+
+
+
 @endsection
+
+@push('js')
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+        const readCount = () => {
+    axios.get(window.location.origin + '/post-count/' + {{$post->id}})
+          }
+
+        setTimeout(() => {
+            readCount()
+        }, 30000 );
+    </script>
+@endpush
